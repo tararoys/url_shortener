@@ -1,4 +1,4 @@
-￼# Sinatra URL Shortener Challenge
+# Sinatra URL Shortener Challenge
 
 We're going to build a simple link shortener, a la [bitly](http://bitly.com/) . You'll have one modelUrl, which is a list of URLs that people have entered.
 
@@ -6,7 +6,7 @@ We're going to build a simple link shortener, a la [bitly](http://bitly.com/) . 
 
 Deepen your understanding of HTTP redirects. Explore ActiveRecord callbacks.
 
-##Objectives 
+##Objectives
 
 ###Simple Shortener
 
@@ -35,8 +35,8 @@ Use a before_save callback in the Url model to generate the short URL.
 ###Counter!
 
 Add a click_count field to your urls table, which keeps track of how many times someone has visited the shortened URL. Add code to the appropriate place in your controller code so that any time someone hits a short URL the counter for the appropriate Url is incremented by 1.
-￼￼￼￼￼￼￼￼
-￼###Add Validations
+
+###Add Validations
 Add a validation to your Url model so that only Urls with valid URLs get saved to the database. Read up on [ActiveRecord validations](http://guides.rubyonrails.org/active_record_validations.html) .
 
 What constitutes a "valid URL" is up to you. It's a sliding scale, from validations that would permit lots of invalid URLs to validations that might reject lots of valid URLs. When you get into it you'll see that expressing the fact "x is a valid URL" in Ruby Land or SQL Land is never perfect.
@@ -55,7 +55,7 @@ The rule of thumb is that where we can, we want to always express constraints in
 
 ###Add Error Handling
 
-When you try to save (create or update) an ActiveRecord object that has invalid data, ActiveRecord will fail. Some methods like create! and save! throw an exception. Others like create (without the ! bang) return the resulting object whether the object was saved successfully to the database or not, while save will return false if perform_validation is true and any validations fail. See [create] (http://apidock.com/rails/ActiveRecord/Base/create/class) and [save] (http://apidock.com/rails/ActiveRecord/Base/save) for more information.
+When you try to save (create or update) an ActiveRecord object that has invalid data, ActiveRecord will fail. Some methods like create! and save! throw an exception. Others like create (without the ! bang) return the resulting object whether the object was saved successfully to the database or not, while save will return false if perform_validation is true and any validations fail. See [create]  (http://apidock.com/rails/ActiveRecord/Base/create/class) and [save]  (http://apidock.com/rails/ActiveRecord/Base/save) for more information.
 
 You can always call [valid? or invalid?](http://guides.rubyonrails.org/active_record_validations.html#valid- questionmark-and-invalid-questionmark) on an ActiveRecord object to see whether its data is valid or invalid.
 
@@ -63,8 +63,8 @@ Use this and the [errors](http://guides.rubyonrails.org/active_record_validation
 
 ##More on Validations, Constraints, and Database Consistency
 We often want to put constraints on what sort of data can go into our database. This way we can guarantee that all data in the database conforms to certain standards, e.g., there are no users missing an email address. Guarantees of this kind — ensuring that the data in our database is never confusing or contradictory or
-￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼
-￼partially changed or otherwise invalid — are called consistency.
+
+partially changed or otherwise invalid — are called consistency.
 If we think of this as a fact from Fact Land, these constraints look like:
 - A user must have a first_name
 - A user must have an email
