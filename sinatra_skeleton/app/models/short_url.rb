@@ -1,4 +1,5 @@
 class ShortUrl < ActiveRecord::Base
+  validates :longform, length: { minimum: 6 }
 
   before_save :generate_shortform
 
