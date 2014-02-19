@@ -1,6 +1,11 @@
 class ShortUrl < ActiveRecord::Base
   validates :longform, length: { minimum: 6 }
-  validates :longform, format: { with: /\Ahttps?:\/\// }
+  validates :longform, format: { with: /\Ahttps?:\/\// } #Best way so far
+  #validates :longform, format: { with: /\A#{URI::regexp}\z/}
+
+
+
+
 
   before_save :generate_shortform
 
@@ -15,3 +20,5 @@ class ShortUrl < ActiveRecord::Base
   end
 
 end
+
+

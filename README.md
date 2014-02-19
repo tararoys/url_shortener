@@ -47,6 +47,25 @@ A valid URL is...
  - Any non-empty string
  - Any non-empty string that starts with "http://" or "https://"
  - Any string that the [Ruby URI module](http://www.ruby-doc.org/stdlib- 1.9.3/libdoc/uri/rdoc/URI.html) says is valid
+    Things tried:
+    ```
+     validates :longform, format: { with: /\A#{URI::regexp}\z/}_
+     validates_format_of :longform, :with => URI::regexp(%w(http https))
+     validates :longform, format: {with: /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/ix}
+
+    ```
+
+    Like Alexander Günther said in the comments, it checks if a string contains a URL.
+
+ To check if the string is a URL, use:
+
+ url =~ /^#{URI::regexp}$/
+
+ Just a quick regexp note - in ruby make sure to us \A and \z for beginning and end of string. ^ and $
+ work in other languages, but specifically mean beginning and end of line in ruby, so if you have a string
+ spanning multiple lines it will only check one line at a time, not the whole string.
+
+
  - Any URL-looking thing which responds to a HTTP request, i.e., we actually check to see if the URL is accessible via HTTP
 
 Some of these are easily expressible in SQL Land. Some of these are hard to express in SQL Land, but ActiveRecord comes with pre-built validation helpers that make it easy to express in Ruby Land. Others require [custom validations](http://guides.rubyonrails.org/active_record_validations.html#performing- custom-validations) that express logic unique to our application domain.
