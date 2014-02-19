@@ -1,5 +1,6 @@
 class ShortUrl < ActiveRecord::Base
   validates :longform, length: { minimum: 6 }
+  validates :longform, format: { with: /\Ahttps?:\/\// }
 
   before_save :generate_shortform
 
