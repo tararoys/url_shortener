@@ -1,2 +1,2 @@
-ShortUrl.create(long: 'http://www.google.com', short: 'google')
-ShortUrl.create(long: 'https://www.github.com', short: 'git')
+ShortUrl.create(longform: 'http://www.google.com', shortform: 'google')
+ShortUrl.create(longform: 'https://www.github.com', shortform: 'git')
