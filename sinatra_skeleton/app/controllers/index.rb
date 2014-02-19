@@ -7,3 +7,8 @@ post '/urls' do
 
   erb :confirmation
 end
+
+get '/:shortform' do
+  @short_url = ShortUrl.where(shortform: params[:shortform]).first
+  redirect "#{@short_url.longform}"
+end
