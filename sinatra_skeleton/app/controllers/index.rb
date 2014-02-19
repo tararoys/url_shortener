@@ -10,5 +10,7 @@ end
 
 get '/:shortform' do
   @short_url = ShortUrl.where(shortform: params[:shortform]).first
+  @short_url.click_counter += 1
+  @short_url.save
   redirect "#{@short_url.longform}"
 end
