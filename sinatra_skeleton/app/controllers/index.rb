@@ -3,7 +3,7 @@ get '/' do
 end
 
 post '/urls' do
-  ShortUrl.create(longform: params[:longform])
+  @short_url = ShortUrl.create(longform: params[:longform])
 
   erb :confirmation
 end
